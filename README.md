@@ -1,54 +1,119 @@
-# React + TypeScript + Vite
+# My Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, reusable, and accessible design system built with React, TypeScript, Vite, Storybook, and Tailwind CSS. This project provides a robust set of UI components to help you build consistent and beautiful user interfaces quickly and efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+**My Design System** aims to accelerate front-end development by offering a comprehensive library of customizable, production-ready UI components. Built with best-in-class tools, it ensures consistency, accessibility, and ease of integration for React projects of any scale.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## Features
+
+- **React + TypeScript:** Strongly typed, component-based architecture for reliability and scalability.
+- **Tailwind CSS:** Utility-first styling for rapid UI development and easy customization.
+- **Storybook Integration:** Interactive documentation and playground for all components.
+- **Vite:** Fast development and build tooling.
+- **Accessible:** Components follow accessibility best practices.
+- **Open Source:** Community-driven and easy to contribute.
+
+---
+
+## Components
+
+The `src/components/` directory includes a growing set of UI primitives and complex components, such as:
+
+- **Button**
+- **Card**
+- **Checkbox**
+- **Dialog**
+- **FAB (Floating Action Button)**
+- **IconButton**
+- **Menu**
+- **NavigationBar**
+- **RadioButton**
+- **Switch**
+- **TextField**
+- **TopAppBar**
+
+Explore all components and their usage examples in Storybook.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/your-design-system-repo.git
+cd your-design-system-repo
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running Storybook
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+Storybook is the primary way to view, test, and interact with all components:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+```bash
+npm run storybook
 ```
+
+This will start Storybook at [http://localhost:6006](http://localhost:6006) (default port).
+
+---
+
+## Usage
+
+To use components in your own project, install the package (replace with your actual package name):
+
+```bash
+npm install your-design-system-package-name
+```
+
+Then import and use components:
+
+```tsx
+import { Button, Card } from 'your-design-system-package-name';
+
+function App() {
+  return (
+    <div>
+      <Button>Click Me</Button>
+      <Card>Content here</Card>
+    </div>
+  );
+}
+```
+
+Refer to the Storybook documentation for detailed usage and props for each component.
+
+---
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. **Fork** the repository.
+2. **Create a new branch** for your feature or fix.
+3. **Make your changes** and add tests/stories as needed.
+4. **Commit** and **push** your branch.
+5. **Open a Pull Request** describing your changes.
+
+Please follow the code style and contribution guidelines outlined in the repository.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
