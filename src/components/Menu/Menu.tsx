@@ -45,7 +45,7 @@ export const Menu: React.FC<MenuProps> = ({ trigger, items, className }) => {
                   className={`
                     group flex w-full items-center gap-3 px-3 py-2 rounded-md text-body-large text-on-surface
                     ${active ? 'bg-on-surface/8' : ''}
-                    ${disabled ? 'opacity-38 pointer-events-none' : ''}
+                    ${disabled ? 'opacity-40 pointer-events-none' : ''}
                     transition-colors
                   `}
                   onClick={item.onClick}

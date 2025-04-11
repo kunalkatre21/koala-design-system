@@ -25,6 +25,7 @@ function App() {
         <span className="font-bold">headline-large</span> typography, and adapts to{' '}
         <span className="font-bold">dark mode</span>.
       </p>
+      <div class="bg-red-500">Test</div>
       <button
         className="px-6 py-3 mb-8 bg-secondary text-onSecondary rounded-large shadow-level2 dark:bg-secondary-dark dark:text-onSecondary-dark dark:shadow-level2-dark font-sans text-title-medium transition-colors"
         onClick={toggleDarkMode}

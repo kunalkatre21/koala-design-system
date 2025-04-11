@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   checked: boolean;
@@ -26,18 +27,18 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <label
       htmlFor={inputId}
-      className={`inline-flex items-center cursor-pointer select-none group ${
-        disabled ? 'opacity-40 cursor-not-allowed' : ''
-      }`}
+      className={clsx(
+        "inline-flex items-center cursor-pointer select-none group",
+        disabled && "opacity-40 cursor-not-allowed"
+      )}
     >
       <span className="relative flex items-center justify-center">
         {/* State layer for hover/focus */}
         <span
-          className={`
-            absolute inset-0 rounded-full pointer-events-none
-            transition-colors
-            ${disabled ? '' : 'group-hover:bg-primary/8 group-focus-within:bg-primary/12'}
-          `}
+          className={clsx(
+            "absolute inset-0 rounded-full pointer-events-none transition-colors",
+            !disabled && "group-hover:bg-primary/8 group-focus-within:bg-primary/12"
+          )}
         />
         {/* Visually hidden input */}
         <input
@@ -54,39 +55,34 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         />
         {/* Custom radio visual */}
         <span
-          className={`
-            w-6 h-6 rounded-full flex items-center justify-center
-            border-2
-            transition-colors
-            ${checked ? (disabled
-              ? 'border-on-surface/38'
-              : 'border-primary')
+          className={clsx(
+            "w-6 h-6 rounded-full flex items-center justify-center border-2 transition-colors bg-surface dark:bg-surface-dark",
+            checked
+              ? (disabled
+                ? "border-on-surface/38 dark:border-on-surface-dark/38"
+                : "border-primary dark:border-primary-dark")
               : (disabled
-                ? 'border-on-surface/38'
-                : 'border-on-surface-variant')}
-            bg-surface
-          `}
+                ? "border-on-surface/38 dark:border-on-surface-dark/38"
+                : "border-on-surface-variant dark:border-on-surface-variant-dark")
+          )}
         >
           {/* Inner circle for checked state */}
           {checked && (
             <span
-              className={`
-                w-3 h-3 rounded-full
-                ${disabled
-                  ? 'bg-on-surface/38'
-                  : 'bg-primary'}
-                transition-colors
-              `}
+              className={clsx(
+                "w-3 h-3 rounded-full transition-colors",
+                disabled ? "bg-on-surface/38 dark:bg-on-surface-dark/38" : "bg-primary dark:bg-primary-dark"
+              )}
             />
           )}
         </span>
       </span>
       {label && (
         <span
-          className={`
-            ml-3 text-base
-            ${disabled ? 'text-on-surface/38' : 'text-on-surface'}
-          `}
+          className={clsx(
+            "ml-3 text-base",
+            disabled ? "text-on-surface/38 dark:text-on-surface-dark/38" : "text-on-surface dark:text-on-surface-dark"
+          )}
         >
           {label}
         </span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export interface SwitchProps {
   checked?: boolean;
@@ -35,30 +36,30 @@ export const Switch: React.FC<SwitchProps> = ({
   const trackBase =
     'w-14 h-8 rounded-full flex items-center transition-colors duration-200 box-border border-2';
   const trackChecked =
-    'bg-primary border-primary';
+    'bg-primary border-primary dark:bg-primary-dark dark:border-primary-dark';
   const trackUnchecked =
-    'bg-surface-container-highest border-outline';
+    'bg-surface-container-highest border-outline dark:bg-surface-container-highest-dark dark:border-outline-dark';
   const trackDisabledChecked =
-    'bg-on-surface/12 border-on-surface/12';
+    'bg-on-surface/12 border-on-surface/12 dark:bg-on-surface-dark/12 dark:border-on-surface-dark/12';
   const trackDisabledUnchecked =
-    'bg-on-surface/12 border-on-surface/12';
+    'bg-on-surface/12 border-on-surface/12 dark:bg-on-surface-dark/12 dark:border-on-surface-dark/12';
 
   // Thumb classes
   const thumbBase =
     'absolute top-1 left-1 w-6 h-6 rounded-full shadow transition-all duration-200 flex items-center justify-center';
   const thumbChecked =
-    'bg-on-primary translate-x-6';
+    'bg-on-primary dark:bg-on-primary-dark translate-x-6';
   const thumbUnchecked =
-    'bg-outline translate-x-0';
+    'bg-outline dark:bg-outline-dark translate-x-0';
   const thumbDisabledChecked =
-    'bg-on-surface/38';
+    'bg-on-surface/38 dark:bg-on-surface-dark/38';
   const thumbDisabledUnchecked =
-    'bg-on-surface/38';
+    'bg-on-surface/38 dark:bg-on-surface-dark/38';
 
   // Icon color
-  const iconChecked = 'text-primary';
-  const iconUnchecked = 'text-on-surface-variant';
-  const iconDisabled = 'text-on-surface/38';
+  const iconChecked = 'text-primary dark:text-primary-dark';
+  const iconUnchecked = 'text-on-surface-variant dark:text-on-surface-variant-dark';
+  const iconDisabled = 'text-on-surface/38 dark:text-on-surface-dark/38';
 
   // State layer (hover/focus) around thumb
   const stateLayerBase =
@@ -71,7 +72,7 @@ export const Switch: React.FC<SwitchProps> = ({
       : 'bg-transparent';
 
   // Disabled opacity
-  const disabledOpacity = disabled ? 'opacity-38' : '';
+  const disabledOpacity = disabled ? 'opacity-40' : '';
 
   return (
     <label
@@ -100,7 +101,7 @@ export const Switch: React.FC<SwitchProps> = ({
         {/* Track */}
         <span
           className={
-            [
+            clsx(
               trackBase,
               disabled
                 ? checked
@@ -110,7 +111,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 ? trackChecked
                 : trackUnchecked,
               disabledOpacity,
-            ].join(' ')
+            )
           }
         />
         {/* State layer */}
@@ -121,7 +122,7 @@ export const Switch: React.FC<SwitchProps> = ({
         {/* Thumb */}
         <span
           className={
-            [
+            clsx(
               thumbBase,
               disabled
                 ? thumbDisabledUnchecked
@@ -130,7 +131,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 : thumbUnchecked,
               disabled && checked ? thumbDisabledChecked : '',
               disabledOpacity,
-            ].join(' ')
+            )
           }
           style={{
             left: checked ? '2.5rem' : '0.25rem',
@@ -140,14 +141,14 @@ export const Switch: React.FC<SwitchProps> = ({
           {icon && (
             <span
               className={
-                [
+                clsx(
                   'flex items-center justify-center text-lg',
                   disabled
                     ? iconDisabled
                     : checked
                     ? iconChecked
                     : iconUnchecked,
-                ].join(' ')
+                )
               }
             >
               {icon}
@@ -157,7 +158,7 @@ export const Switch: React.FC<SwitchProps> = ({
       </span>
       {label && (
         <span
-          className={`text-on-surface-variant text-base ${disabled ? 'opacity-38' : ''}`}
+          className={`text-on-surface-variant dark:text-on-surface-variant-dark text-base ${disabled ? 'opacity-40' : ''}`}
         >
           {label}
         </span>

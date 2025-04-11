@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonProps } from './Button';
-import { MdFavorite, MdSend } from 'react-icons/md';
+import { MdFavorite, MdSend, MdCheck, MdClose } from 'react-icons/md';
 
 const meta: Meta<ButtonProps> = {
   title: 'Components/Button',
@@ -10,15 +10,22 @@ const meta: Meta<ButtonProps> = {
       control: { type: 'select' },
       options: ['filled', 'outlined', 'text', 'elevated', 'tonal'],
     },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
     disabled: { control: 'boolean' },
     icon: { control: false },
     trailingIcon: { control: false },
+    iconAriaLabel: { control: 'text' },
+    trailingIconAriaLabel: { control: 'text' },
     children: { control: 'text' },
     onClick: { action: 'clicked' },
   },
   args: {
     children: 'Button',
     variant: 'filled',
+    size: 'medium',
     disabled: false,
   },
   parameters: {
@@ -35,83 +42,140 @@ export default meta;
 
 type Story = StoryObj<ButtonProps>;
 
-// --- Variant Stories ---
-
-export const Filled: Story = {
-  args: { variant: 'filled', children: 'Filled' },
+// --- Sizing Stories ---
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Button {...args} size="small">Small</Button>
+      <Button {...args} size="medium">Medium</Button>
+      <Button {...args} size="large">Large</Button>
+    </div>
+  ),
+  args: { variant: 'filled' },
 };
 
-export const Outlined: Story = {
-  args: { variant: 'outlined', children: 'Outlined' },
+// --- Variant + State Stories ---
+export const AllVariants: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {['filled', 'outlined', 'text', 'elevated', 'tonal'].map((variant) => (
+        <div key={variant} className="flex gap-4 items-center">
+          <Button {...args} variant={variant as ButtonProps['variant']}>Default</Button>
+          <Button {...args} variant={variant as ButtonProps['variant']} disabled>Disabled</Button>
+        </div>
+      ))}
+    </div>
+  ),
+  args: { size: 'medium' },
 };
 
-export const Text: Story = {
-  args: { variant: 'text', children: 'Text' },
-};
-
-export const Elevated: Story = {
-  args: { variant: 'elevated', children: 'Elevated' },
-};
-
-export const Tonal: Story = {
-  args: { variant: 'tonal', children: 'Tonal' },
-};
-
-// --- State Stories ---
-
-export const FilledDisabled: Story = {
-  args: { variant: 'filled', children: 'Disabled', disabled: true },
-};
-
-export const OutlinedHover: Story = {
-  args: { variant: 'outlined', children: 'Hover (see controls)' },
+export const InteractiveStates: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {['filled', 'outlined', 'text', 'elevated', 'tonal'].map((variant) => (
+        <div key={variant} className="flex gap-4 items-center">
+          <Button {...args} variant={variant as ButtonProps['variant']} className="storybook-pseudo-hover">Hover</Button>
+          <Button {...args} variant={variant as ButtonProps['variant']} className="storybook-pseudo-active">Active</Button>
+          <Button {...args} variant={variant as ButtonProps['variant']} className="storybook-pseudo-focus">Focus</Button>
+        </div>
+      ))}
+    </div>
+  ),
   parameters: {
-    pseudo: { hover: true },
+    pseudo: { hover: true, active: true, focus: true },
   },
-};
-
-export const TextActive: Story = {
-  args: { variant: 'text', children: 'Active (see controls)' },
-  parameters: {
-    pseudo: { active: true },
-  },
+  args: { size: 'medium', children: 'State' },
 };
 
 // --- Icon Stories ---
-
-export const WithLeadingIcon: Story = {
-  args: {
-    variant: 'filled',
-    children: 'Favorite',
-    icon: <MdFavorite aria-label="Favorite" />,
-  },
+export const LeadingIcon: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Button {...args} icon={<MdFavorite />} iconAriaLabel="Favorite">Favorite</Button>
+      <Button {...args} icon={<MdCheck />} iconAriaLabel="Check">Check</Button>
+    </div>
+  ),
+  args: { variant: 'filled', size: 'medium' },
 };
 
-export const WithTrailingIcon: Story = {
-  args: {
-    variant: 'outlined',
-    children: 'Send',
-    trailingIcon: <MdSend aria-label="Send" />,
-  },
+export const TrailingIcon: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Button {...args} trailingIcon={<MdSend />} trailingIconAriaLabel="Send">Send</Button>
+      <Button {...args} trailingIcon={<MdClose />} trailingIconAriaLabel="Close">Close</Button>
+    </div>
+  ),
+  args: { variant: 'outlined', size: 'medium' },
+};
+
+export const BothIcons: Story = {
+  render: (args) => (
+    <Button
+      {...args}
+      icon={<MdFavorite />}
+      iconAriaLabel="Favorite"
+      trailingIcon={<MdSend />}
+      trailingIconAriaLabel="Send"
+    >
+      Favorite & Send
+    </Button>
+  ),
+  args: { variant: 'tonal', size: 'large' },
 };
 
 export const IconOnly: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Button {...args} icon={<MdFavorite />} iconAriaLabel="Favorite" />
+      <Button {...args} icon={<MdSend />} iconAriaLabel="Send" />
+      <Button {...args} icon={<MdCheck />} iconAriaLabel="Check" size="small" />
+      <Button {...args} icon={<MdClose />} iconAriaLabel="Close" size="large" />
+    </div>
+  ),
+  args: { variant: 'filled', size: 'medium', children: undefined },
+};
+
+// --- Edge Cases ---
+export const LongText: Story = {
   args: {
-    variant: 'filled',
-    icon: <MdFavorite aria-label="Favorite" />,
-    'aria-label': 'Favorite',
-    children: undefined,
+    variant: 'outlined',
+    size: 'large',
+    children: 'This is a very long button label to test overflow and padding',
   },
 };
 
-// --- Dark Mode Stories ---
-
-export const FilledDark: Story = {
-  args: { variant: 'filled', children: 'Filled (Dark)' },
-  parameters: { backgrounds: { default: 'dark' } },
+export const NoText: Story = {
+  args: {
+    variant: 'text',
+    size: 'medium',
+    children: '',
+  },
 };
 
-export const OutlinedDark: Story = {
-  args: { variant: 'outlined', children: 'Outlined (Dark)' },
+export const DisabledStates: Story = {
+  render: (args) => (
+    <div className="flex gap-4 items-center">
+      <Button {...args} disabled>Disabled</Button>
+      <Button {...args} icon={<MdFavorite />} iconAriaLabel="Favorite" disabled />
+      <Button {...args} trailingIcon={<MdSend />} trailingIconAriaLabel="Send" disabled />
+      <Button {...args} icon={<MdCheck />} iconAriaLabel="Check" size="small" disabled />
+    </div>
+  ),
+  args: { variant: 'filled', size: 'medium' },
+};
+
+// --- Dark Mode Stories ---
+export const AllVariantsDark: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {['filled', 'outlined', 'text', 'elevated', 'tonal'].map((variant) => (
+        <div key={variant} className="flex gap-4 items-center">
+          <Button {...args} variant={variant as ButtonProps['variant']}>Default</Button>
+          <Button {...args} variant={variant as ButtonProps['variant']} disabled>Disabled</Button>
+        </div>
+      ))}
+    </div>
+  ),
   parameters: { backgrounds: { default: 'dark' } },
+  args: { size: 'medium' },
 };

@@ -18,7 +18,7 @@ const LABEL_COLOR_UNSELECTED = "text-on-surface-variant";
 const LABEL_COLOR_SELECTED = "text-on-surface";
 const STATE_LAYER_UNSELECTED = "bg-on-surface-variant/8";
 const STATE_LAYER_SELECTED = "bg-primary/8";
-const DISABLED_OPACITY = "opacity-38 pointer-events-none";
+const DISABLED_OPACITY = "opacity-40 pointer-events-none";
 
 export const NavigationBarItem: React.FC<NavigationBarItemProps> = ({
   icon,

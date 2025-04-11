@@ -93,7 +93,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
   // Disabled state
   if (disabled) {
-    containerClasses += ` opacity-38 pointer-events-none`;
+    containerClasses += ` opacity-40 pointer-events-none`;
     if (v.disabledBg) {
       containerClasses += ` ${v.disabledBg}`;
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 
 export type TopAppBarVariant = "small" | "center" | "medium" | "large";
 
@@ -71,8 +72,8 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 }) => {
   // Container classes
   const baseBg = scrolled && (variant === "medium" || variant === "large")
-    ? "bg-surface-container"
-    : "bg-surface";
+    ? "bg-surface-container dark:bg-surface-container-dark"
+    : "bg-surface dark:bg-surface-dark";
   const height = HEIGHTS[variant];
   const padding = "px-4";
   const flex = "flex items-center";
@@ -89,7 +90,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   const titleMarginTop = scrolled
     ? TITLE_MARGIN_TOP_SCROLLED[variant]
     : TITLE_MARGIN_TOP[variant];
-  const titleColor = "text-on-surface";
+  const titleColor = "text-on-surface dark:text-on-surface-dark";
   const titleWeight = "font-medium";
   const titleTransition = "transition-all duration-200";
 
@@ -98,7 +99,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 
   return (
     <header
-      className={[
+      className={clsx(
         "w-full",
         baseBg,
         height,
@@ -107,7 +108,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
         transition,
         shadow,
         className,
-      ].join(" ")}
+      )}
       role="banner"
       aria-label={title}
       data-variant={variant}
@@ -127,21 +128,21 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 
       {/* Title */}
       <div
-        className={[
+        className={clsx(
           "flex-1 flex",
           titleAlign,
           titleMarginTop,
           titleTransition,
-        ].join(" ")}
+        )}
       >
         <span
-          className={[
+          className={clsx(
             titleSize,
             titleColor,
             titleWeight,
             titleTransition,
             "truncate",
-          ].join(" ")}
+          )}
           id="top-app-bar-title"
         >
           {title}

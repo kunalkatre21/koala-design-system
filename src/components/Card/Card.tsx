@@ -29,11 +29,11 @@ export const Card: React.FC<CardProps> = ({
   // Variant styles
   const variantStyles = {
     elevated:
-      'bg-surface-container-lowest shadow-elevation-1 hover:shadow-elevation-2 focus:shadow-elevation-2',
+      'bg-surface-container-lowest dark:bg-surface-container-lowest-dark shadow-elevation-1 hover:shadow-elevation-2 focus:shadow-elevation-2',
     filled:
-      'bg-surface shadow-elevation-0',
+      'bg-surface dark:bg-surface-dark shadow-elevation-0',
     outlined:
-      'bg-surface-container-lowest border border-outline-variant shadow-elevation-0',
+      'bg-surface-container-lowest dark:bg-surface-container-lowest-dark border border-outline-variant dark:border-outline-variant-dark shadow-elevation-0',
   };
 
   // State layer for hover/focus (M3 spec: on-surface with opacity)

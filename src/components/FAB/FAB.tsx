@@ -46,7 +46,7 @@ const elevationFocus = 'focus:shadow-elevation-5';
 const elevationActive = 'active:shadow-elevation-1';
 
 const disabledClasses =
-  'disabled:opacity-38 disabled:bg-on-surface/12 disabled:text-on-surface/38 disabled:shadow-elevation-0';
+  'disabled:opacity-40 disabled:bg-on-surface/12 disabled:text-on-surface/38 disabled:shadow-elevation-0';
 
 export const FAB: React.FC<FABProps> = ({
   variant = 'primary',

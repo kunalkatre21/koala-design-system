@@ -19,6 +19,17 @@ A modern, reusable, and accessible design system built with React, TypeScript, V
 - **Accessible:** Components follow accessibility best practices.
 - **Open Source:** Community-driven and easy to contribute.
 
+
+---
+
+## Technical Details
+
+- **Tailwind CSS:** This project uses Tailwind CSS v3.4.3 for styling.
+- **Configuration:**
+    - `tailwind.config.js` uses CommonJS syntax (`module.exports = { ... }`).
+    - Custom theme tokens (colors, fonts, etc.) are defined directly under the `theme` key (e.g., `theme.colors`) to ensure utility classes like `bg-primary` are generated.
+    - A minimal `postcss.config.cjs` file is included to explicitly configure Tailwind and Autoprefixer for Vite.
+
 ---
 
 ## Components

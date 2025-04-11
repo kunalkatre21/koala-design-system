@@ -28,7 +28,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   }, [indeterminate]);
 
   // M3 color tokens (assumes Tailwind config has these)
-  // border-on-surface-variant, bg-primary, border-primary, opacity-38, etc.
+  // border-on-surface-variant, bg-primary, border-primary, opacity-40, etc.
 
   // State classes
   const baseContainer =
@@ -44,7 +44,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const boxIndeterminate =
     'bg-primary border-primary';
   const boxDisabled =
-    'opacity-38 border-on-surface/38 bg-on-surface/0';
+    'opacity-40 border-on-surface/38 bg-on-surface/0';
   const boxCheckedDisabled =
     'bg-on-surface/38 border-on-surface/38';
   const boxUncheckedDisabled =
@@ -133,7 +133,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       {label && (
         <span
           className={`ml-3 text-on-surface text-base select-none ${
-            disabled ? 'opacity-38' : ''
+            disabled ? 'opacity-40' : ''
           }`}
         >
           {label}

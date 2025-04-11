@@ -1,4 +1,5 @@
 import React, { useState, useRef, InputHTMLAttributes, ChangeEvent, FocusEvent } from 'react';
+import clsx from 'clsx';
 
 export type TextFieldVariant = 'filled' | 'outlined';
 
@@ -50,21 +51,21 @@ export const TextField: React.FC<TextFieldProps> = ({
   // Color tokens (Tailwind M3 tokens)
   const base = {
     filled: {
-      container: 'bg-surface-container-highest',
+      container: 'bg-surface-container-highest dark:bg-surface-container-highest-dark',
       border: 'border-b-2',
       borderColor: errorText
         ? 'border-error'
         : focused
         ? 'border-primary'
-        : 'border-on-surface-variant',
+        : 'border-on-surface-variant dark:border-on-surface-variant-dark',
       label: errorText
         ? 'text-error'
         : focused
         ? 'text-primary'
-        : 'text-on-surface-variant',
-      input: 'text-on-surface',
-      icon: 'text-on-surface-variant',
-      disabled: 'bg-on-surface/4 border-on-surface/12 text-on-surface/38',
+        : 'text-on-surface-variant dark:text-on-surface-variant-dark',
+      input: 'text-on-surface dark:text-on-surface-dark',
+      icon: 'text-on-surface-variant dark:text-on-surface-variant-dark',
+      disabled: 'bg-on-surface/4 dark:bg-on-surface-dark/4 border-on-surface/12 dark:border-on-surface-dark/12 text-on-surface/38 dark:text-on-surface-dark/38',
     },
     outlined: {
       container: 'bg-transparent border-2 rounded-lg',
@@ -72,20 +73,20 @@ export const TextField: React.FC<TextFieldProps> = ({
         ? 'border-error'
         : focused
         ? 'border-primary'
-        : 'border-outline',
+        : 'border-outline dark:border-outline-dark',
       label: errorText
         ? 'text-error'
         : focused
         ? 'text-primary'
-        : 'text-on-surface-variant',
-      input: 'text-on-surface',
-      icon: 'text-on-surface-variant',
-      disabled: 'bg-on-surface/4 border-on-surface/12 text-on-surface/38',
+        : 'text-on-surface-variant dark:text-on-surface-variant-dark',
+      input: 'text-on-surface dark:text-on-surface-dark',
+      icon: 'text-on-surface-variant dark:text-on-surface-variant-dark',
+      disabled: 'bg-on-surface/4 dark:bg-on-surface-dark/4 border-on-surface/12 dark:border-on-surface-dark/12 text-on-surface/38 dark:text-on-surface-dark/38',
     },
   };
 
   // Helper/error/counter text color
-  const helperTextColor = errorText ? 'text-error' : 'text-on-surface-variant';
+  const helperTextColor = errorText ? 'text-error' : 'text-on-surface-variant dark:text-on-surface-variant-dark';
 
   // Disabled state
   const isDisabled = disabled;
@@ -137,23 +138,23 @@ export const TextField: React.FC<TextFieldProps> = ({
       : '';
 
   // Label classes
-  const labelClasses = [
+  const labelClasses = clsx(
     labelBase,
     variant === 'filled' ? filledLabelFloated : outlinedLabelFloated,
     variant === 'filled' ? base.filled.label : base.outlined.label,
     isDisabled ? 'text-on-surface/38' : '',
     'pointer-events-none',
-  ].join(' ');
+  );
 
   // Input classes
-  const inputClasses = [
+  const inputClasses = clsx(
     inputBase,
     variant === 'filled' ? base.filled.input : base.outlined.input,
     inputPaddingLeft,
     inputPaddingRight,
     isDisabled ? 'text-on-surface/38' : '',
     maxLength ? 'pr-16' : '',
-  ].join(' ');
+  );
 
   // Container style
   const containerStyle =
