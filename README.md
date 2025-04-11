@@ -54,8 +54,8 @@ Explore all components and their usage examples in Storybook.
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/your-design-system-repo.git
-cd your-design-system-repo
+git clone https://github.com/kunalkatre21/koala-design-system.git
+cd koala-design-system
 npm install
 ```
 
@@ -76,13 +76,13 @@ This will start Storybook at [http://localhost:6006](http://localhost:6006) (def
 To use components in your own project, install the package (replace with your actual package name):
 
 ```bash
-npm install your-design-system-package-name
+npm install koala-design-system
 ```
 
 Then import and use components:
 
 ```tsx
-import { Button, Card } from 'your-design-system-package-name';
+import { Button, Card } from 'koala-design-system';
 
 function App() {
   return (
