@@ -1,0 +1,302 @@
+import { Meta, Title, Subtitle, Description, ColorPalette, ColorItem, Typeset } from '@storybook/blocks';
+
+<Meta title="Design System/Color Tokens" component={null} />
+
+<Title>Color Tokens</Title>
+
+<Subtitle>Color tokens are the single source of truth for foundational color styles in the design system.</Subtitle>
+
+This page documents the color tokens used throughout the system. Tokens are available as CSS variables and via the theme object in JS/TS.
+
+---
+
+## Color Tokens
+
+<ColorPalette>
+  {/* Primary Colors */}
+  <ColorItem
+    title="primary"
+    subtitle="Primary brand color"
+    colors={{ primary: '#215FFF' }}
+  />
+  <ColorItem
+    title="onPrimary"
+    subtitle="Text/icon on primary"
+    colors={{ onPrimary: '#FFFFFF' }}
+  />
+  <ColorItem
+    title="primaryContainer"
+    subtitle="Primary container background"
+    colors={{ primaryContainer: '#D6E2FF' }}
+  />
+  <ColorItem
+    title="onPrimaryContainer"
+    subtitle="Text/icon on primary container"
+    colors={{ onPrimaryContainer: '#001A41' }}
+  />
+  <ColorItem
+    title="primary-dark"
+    subtitle="Primary brand color (Dark)"
+    colors={{ 'primary-dark': '#AFC6FF' }}
+  />
+  <ColorItem
+    title="onPrimary-dark"
+    subtitle="Text/icon on primary (Dark)"
+    colors={{ 'onPrimary-dark': '#00306E' }}
+  />
+  <ColorItem
+    title="primaryContainer-dark"
+    subtitle="Primary container background (Dark)"
+    colors={{ 'primaryContainer-dark': '#00429B' }}
+  />
+  <ColorItem
+    title="onPrimaryContainer-dark"
+    subtitle="Text/icon on primary container (Dark)"
+    colors={{ 'onPrimaryContainer-dark': '#D6E2FF' }}
+  />
+
+  {/* Secondary Colors */}
+  <ColorItem
+    title="secondary"
+    subtitle="Secondary brand color"
+    colors={{ secondary: '#5B6B7B' }}
+  />
+  <ColorItem
+    title="onSecondary"
+    subtitle="Text/icon on secondary"
+    colors={{ onSecondary: '#FFFFFF' }}
+  />
+  <ColorItem
+    title="secondaryContainer"
+    subtitle="Secondary container background"
+    colors={{ secondaryContainer: '#DFE3EB' }}
+  />
+  <ColorItem
+    title="onSecondaryContainer"
+    subtitle="Text/icon on secondary container"
+    colors={{ onSecondaryContainer: '#171C22' }}
+  />
+  <ColorItem
+    title="secondary-dark"
+    subtitle="Secondary brand color (Dark)"
+    colors={{ 'secondary-dark': '#BBC7DB' }}
+  />
+  <ColorItem
+    title="onSecondary-dark"
+    subtitle="Text/icon on secondary (Dark)"
+    colors={{ 'onSecondary-dark': '#273141' }}
+  />
+  <ColorItem
+    title="secondaryContainer-dark"
+    subtitle="Secondary container background (Dark)"
+    colors={{ 'secondaryContainer-dark': '#404A5A' }}
+  />
+  <ColorItem
+    title="onSecondaryContainer-dark"
+    subtitle="Text/icon on secondary container (Dark)"
+    colors={{ 'onSecondaryContainer-dark': '#DFE3EB' }}
+  />
+
+  {/* Tertiary Colors */}
+  <ColorItem
+    title="tertiary"
+    subtitle="Tertiary accent color"
+    colors={{ tertiary: '#7B5B9B' }}
+  />
+  <ColorItem
+    title="onTertiary"
+    subtitle="Text/icon on tertiary"
+    colors={{ onTertiary: '#FFFFFF' }}
+  />
+  <ColorItem
+    title="tertiaryContainer"
+    subtitle="Tertiary container background"
+    colors={{ tertiaryContainer: '#F2DAFF' }}
+  />
+  <ColorItem
+    title="onTertiaryContainer"
+    subtitle="Text/icon on tertiary container"
+    colors={{ onTertiaryContainer: '#271141' }}
+  />
+  <ColorItem
+    title="tertiary-dark"
+    subtitle="Tertiary accent color (Dark)"
+    colors={{ 'tertiary-dark': '#D6BAFF' }}
+  />
+  <ColorItem
+    title="onTertiary-dark"
+    subtitle="Text/icon on tertiary (Dark)"
+    colors={{ 'onTertiary-dark': '#3D1D5C' }}
+  />
+  <ColorItem
+    title="tertiaryContainer-dark"
+    subtitle="Tertiary container background (Dark)"
+    colors={{ 'tertiaryContainer-dark': '#563B74' }}
+  />
+  <ColorItem
+    title="onTertiaryContainer-dark"
+    subtitle="Text/icon on tertiary container (Dark)"
+    colors={{ 'onTertiaryContainer-dark': '#F2DAFF' }}
+  />
+
+  {/* Error Colors */}
+  <ColorItem
+    title="error"
+    subtitle="Error color"
+    colors={{ error: '#BA1A1A' }}
+  />
+  <ColorItem
+    title="onError"
+    subtitle="Text/icon on error"
+    colors={{ onError: '#FFFFFF' }}
+  />
+  <ColorItem
+    title="errorContainer"
+    subtitle="Error container background"
+    colors={{ errorContainer: '#FFDAD6' }}
+  />
+  <ColorItem
+    title="onErrorContainer"
+    subtitle="Text/icon on error container"
+    colors={{ onErrorContainer: '#410002' }}
+  />
+  <ColorItem
+    title="error-dark"
+    subtitle="Error color (Dark)"
+    colors={{ 'error-dark': '#FFB4AB' }}
+  />
+  <ColorItem
+    title="onError-dark"
+    subtitle="Text/icon on error (Dark)"
+    colors={{ 'onError-dark': '#690005' }}
+  />
+  <ColorItem
+    title="errorContainer-dark"
+    subtitle="Error container background (Dark)"
+    colors={{ 'errorContainer-dark': '#93000A' }}
+  />
+  <ColorItem
+    title="onErrorContainer-dark"
+    subtitle="Text/icon on error container (Dark)"
+    colors={{ 'onErrorContainer-dark': '#FFDAD6' }}
+  />
+
+  {/* Surface/Background Colors */}
+  <ColorItem
+    title="background"
+    subtitle="App background"
+    colors={{ background: '#F8FAFF' }}
+  />
+  <ColorItem
+    title="onBackground"
+    subtitle="Text/icon on background"
+    colors={{ onBackground: '#191C20' }}
+  />
+  <ColorItem
+    title="surface"
+    subtitle="Surface background"
+    colors={{ surface: '#F8FAFF' }}
+  />
+  <ColorItem
+    title="onSurface"
+    subtitle="Text/icon on surface"
+    colors={{ onSurface: '#191C20' }}
+  />
+  <ColorItem
+    title="surfaceVariant"
+    subtitle="Surface variant background"
+    colors={{ surfaceVariant: '#E1E2EC' }}
+  />
+  <ColorItem
+    title="onSurfaceVariant"
+    subtitle="Text/icon on surface variant"
+    colors={{ onSurfaceVariant: '#44474F' }}
+  />
+  <ColorItem
+    title="background-dark"
+    subtitle="App background (Dark)"
+    colors={{ 'background-dark': '#191C20' }}
+  />
+  <ColorItem
+    title="onBackground-dark"
+    subtitle="Text/icon on background (Dark)"
+    colors={{ 'onBackground-dark': '#E2E2E6' }}
+  />
+  <ColorItem
+    title="surface-dark"
+    subtitle="Surface background (Dark)"
+    colors={{ 'surface-dark': '#191C20' }}
+  />
+  <ColorItem
+    title="onSurface-dark"
+    subtitle="Text/icon on surface (Dark)"
+    colors={{ 'onSurface-dark': '#E2E2E6' }}
+  />
+  <ColorItem
+    title="surfaceVariant-dark"
+    subtitle="Surface variant background (Dark)"
+    colors={{ 'surfaceVariant-dark': '#44474F' }}
+  />
+  <ColorItem
+    title="onSurfaceVariant-dark"
+    subtitle="Text/icon on surface variant (Dark)"
+    colors={{ 'onSurfaceVariant-dark': '#C4C6CF' }}
+  />
+
+  {/* Outline & Inverse Colors */}
+  <ColorItem
+    title="outline"
+    subtitle="Outline/border color"
+    colors={{ outline: '#757780' }}
+  />
+  <ColorItem
+    title="outline-dark"
+    subtitle="Outline/border color (Dark)"
+    colors={{ 'outline-dark': '#8E9099' }}
+  />
+  <ColorItem
+    title="inverseSurface"
+    subtitle="Inverse surface background"
+    colors={{ inverseSurface: '#2E3136' }}
+  />
+  <ColorItem
+    title="inverseOnSurface"
+    subtitle="Text/icon on inverse surface"
+    colors={{ inverseOnSurface: '#F1F1F6' }}
+  />
+  <ColorItem
+    title="inverseSurface-dark"
+    subtitle="Inverse surface background (Dark)"
+    colors={{ 'inverseSurface-dark': '#E2E2E6' }}
+  />
+  <ColorItem
+    title="inverseOnSurface-dark"
+    subtitle="Text/icon on inverse surface (Dark)"
+    colors={{ 'inverseOnSurface-dark': '#2E3136' }}
+  />
+</ColorPalette>
+
+### Usage
+
+For each color token, you can use the CSS variable or access it via the theme object in JS/TS:
+
+```css
+/* CSS/SCSS Variable */
+var(--cds-color-primary)
+var(--cds-color-onPrimary)
+var(--cds-color-primaryContainer)
+var(--cds-color-onPrimaryContainer)
+/* ...and so on for each token */
+```
+
+```javascript
+// JS/TS Theme Object
+theme.colors.primary
+theme.colors.onPrimary
+theme.colors.primaryContainer
+theme.colors.onPrimaryContainer
+// ...and so on for each token
+```
+
+> **Accessibility Note:**  
+> Always check color contrast, especially for text (`on...`) colors against their backgrounds, to ensure readability and accessibility compliance.
