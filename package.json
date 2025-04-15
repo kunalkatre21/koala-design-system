@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tailwind:build": "postcss src/index.css -o src/tailwind-test-output.css"
+    "tailwind:build": "postcss src/index.css -o src/tailwind-test-output.css",
+    "chromatic": "npx chromatic --exit-once-uploaded"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

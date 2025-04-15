@@ -10,3 +10,4 @@ export * from './IconButton';
 export * from './Menu';
 export * from './NavigationBar';
 export * from './TopAppBar';
+export * from './PlaceholderImage';

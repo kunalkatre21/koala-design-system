@@ -5,6 +5,7 @@ import { MdFavorite, MdSend, MdCheck, MdClose } from 'react-icons/md';
 const meta: Meta<ButtonProps> = {
   title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: { type: 'select' },
@@ -144,13 +145,6 @@ export const LongText: Story = {
   },
 };
 
-export const NoText: Story = {
-  args: {
-    variant: 'text',
-    size: 'medium',
-    children: '',
-  },
-};
 
 export const DisabledStates: Story = {
   render: (args) => (

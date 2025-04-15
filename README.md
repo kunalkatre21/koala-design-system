@@ -82,6 +82,50 @@ This will start Storybook at [http://localhost:6006](http://localhost:6006) (def
 
 ---
 
+## Visual Regression Testing
+
+This project uses [Chromatic](https://www.chromatic.com/) for automated visual regression testing of all Storybook stories. Chromatic captures screenshots of your components and detects any visual changes over time.
+
+### Running Visual Regression Tests Locally
+
+To run a visual regression test and review UI changes:
+
+```bash
+npm run chromatic
+```
+
+- This will build your Storybook and upload it to Chromatic in anonymous mode.
+- After upload, a browser window will open with the results, showing any visual changes or diffs for all components.
+- You can review, accept, or reject changes in the Chromatic UI.
+
+### Key Components Covered
+
+Visual regression tests are automatically run for all components with Storybook stories, including:
+- Button
+- Card
+- Dialog
+- NavigationBar
+
+### CI Integration (Optional)
+
+For continuous integration, sign up at [chromatic.com](https://www.chromatic.com/), create a project, and obtain a project-token. Then update the script in `package.json`:
+
+```
+"chromatic": "npx chromatic --project-token=<your-token> --exit-once-uploaded"
+```
+
+This enables persistent build history and team review workflows.
+
+### Interpreting Results
+
+- **No changes:** Chromatic will report no visual differences.
+- **Detected changes:** Chromatic will highlight changed areas and allow you to review diffs in the browser.
+- **Failed builds:** Usually indicate Storybook build errors or network issues.
+
+For more details, see the [Chromatic documentation](https://www.chromatic.com/docs/).
+
+---
+
 ## Usage
 
 To use components in your own project, install the package (replace with your actual package name):

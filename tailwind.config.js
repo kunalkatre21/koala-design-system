@@ -8,7 +8,7 @@ module.exports = {
     },
     colors: {
       // Material 3 Color Roles (light mode)
-      'primary': '#215FFF',
+      'primary': 'rgb(var(--color-primary) / <alpha-value>)', // Use CSS variable
       'on-primary': '#FFFFFF',
       'primary-container': '#D6E2FF',
       'on-primary-container': '#001A41',

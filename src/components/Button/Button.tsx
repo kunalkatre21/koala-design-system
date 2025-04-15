@@ -16,19 +16,19 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const baseClasses =
-  'relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 disabled:opacity-40 disabled:pointer-events-none select-none';
+  'relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors transition-all duration-150 ease-out motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 disabled:opacity-40 disabled:pointer-events-none select-none';
 
 const variantClasses: Record<ButtonVariant, string> = {
   filled:
-    'bg-primary text-on-primary shadow-md hover:bg-primary/90 active:bg-primary/80 disabled:bg-on-surface/12 disabled:text-on-surface/38 dark:bg-primary-dark dark:text-on-primary-dark dark:hover:bg-primary-dark/90 dark:active:bg-primary-dark/80',
+    'bg-primary text-on-primary shadow-md disabled:bg-on-surface/12 disabled:text-on-surface/38', // Removed dark: variants for primary
   outlined:
-    'border border-outline bg-transparent text-primary hover:bg-primary/8 active:bg-primary/12 disabled:border-on-surface/12 disabled:text-on-surface/38 dark:border-outline-dark dark:text-primary-dark dark:hover:bg-primary-dark/8 dark:active:bg-primary-dark/12',
+    'border border-outline bg-transparent text-primary disabled:border-on-surface/12 disabled:text-on-surface/38 dark:border-outline-dark', // Removed dark:text-primary-dark
   text:
-    'bg-transparent text-primary hover:bg-primary/8 active:bg-primary/12 disabled:text-on-surface/38 dark:text-primary-dark dark:hover:bg-primary-dark/8 dark:active:bg-primary-dark/12',
+    'bg-transparent text-primary disabled:text-on-surface/38', // Removed dark:text-primary-dark
   elevated:
-    'bg-surface-container-low text-primary shadow-elevated hover:bg-primary/8 active:bg-primary/12 disabled:bg-on-surface/12 disabled:text-on-surface/38 dark:bg-surface-container-low-dark dark:text-primary-dark dark:hover:bg-primary-dark/8 dark:active:bg-primary-dark/12',
+    'bg-surface-container-low text-primary shadow-elevated disabled:bg-on-surface/12 disabled:text-on-surface/38 dark:bg-surface-container-low-dark', // Removed dark:text-primary-dark
   tonal:
-    'bg-secondary-container text-on-secondary-container shadow-md hover:bg-secondary-container/90 active:bg-secondary-container/80 disabled:bg-on-surface/12 disabled:text-on-surface/38 dark:bg-secondary-container-dark dark:text-on-secondary-container-dark dark:hover:bg-secondary-container-dark/90 dark:active:bg-secondary-container-dark/80',
+    'bg-secondary-container text-on-secondary-container shadow-md disabled:bg-on-surface/12 disabled:text-on-surface/38 dark:bg-secondary-container-dark dark:text-on-secondary-container-dark',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -60,11 +60,52 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    // Prevent rendering a button with neither text nor icon
+    if (!children && !icon && !trailingIcon) {
+      throw new Error(
+        "Button: Must provide at least one of 'children', 'icon', or 'trailingIcon'. Rendering a button with neither text nor icon is not allowed."
+      );
+    }
+
     // Compose classes
+    // Interaction classes per variant
+    const interactionClasses: Record<ButtonVariant, string> = {
+      filled: clsx(
+        // Hover
+        'hover:bg-primary/90 motion-safe:hover:shadow-lg',
+        // Pressed
+        'active:bg-primary/80 active:shadow-md motion-safe:active:scale-[0.98]',
+        // Dark mode
+        // Removed dark: variants for primary interaction
+      ),
+      tonal: clsx(
+        'hover:bg-secondary-container/90 motion-safe:hover:shadow-lg',
+        'active:bg-secondary-container/80 active:shadow-md motion-safe:active:scale-[0.98]',
+        'dark:hover:bg-secondary-container-dark/90 dark:active:bg-secondary-container-dark/80'
+      ),
+      outlined: clsx(
+        'hover:bg-primary/8 hover:border-outline/80',
+        'active:bg-primary/12 motion-safe:active:scale-[0.98]',
+        // Removed dark: variants for primary interaction
+      ),
+      text: clsx(
+        'hover:bg-primary/8',
+        'active:bg-primary/12 motion-safe:active:scale-[0.98]',
+        // Removed dark: variants for primary interaction
+      ),
+      elevated: clsx(
+        // No background overlay on hover, only shadow/scale
+        'motion-safe:hover:shadow-xl motion-safe:hover:scale-[1.02]',
+        'active:bg-primary/12 active:shadow-md motion-safe:active:scale-[0.97]',
+        // Removed dark: variants for primary interaction
+      ),
+    };
+
     const classes = clsx(
       baseClasses,
       sizeClasses[size],
       variantClasses[variant],
+      interactionClasses[variant],
       className
     );
 
